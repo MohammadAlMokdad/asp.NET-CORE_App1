@@ -1,0 +1,41 @@
+﻿@model WebApplication1.Student
+
+@{
+    ViewData["Title"] = "Create Student";
+}
+
+<div class="container py-5">
+    <div class="card shadow-lg border-0 p-4">
+        <h1 class="display-5 fw-bold text-primary text-center">@ViewData["Title"]</h1>
+        <h4 class="text-center text-muted">Create a new student record</h4>
+        <hr />
+
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="name" class="control-label">Student Name</label>
+                        <input asp-for="name" class="form-control" placeholder="Enter student's name" />
+                        <span asp-validation-for="name" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary w-100">Create</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="mt-4 text-center">
+            <a asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

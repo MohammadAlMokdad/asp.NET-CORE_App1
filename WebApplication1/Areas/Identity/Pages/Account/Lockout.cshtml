@@ -1,0 +1,20 @@
+﻿@page
+@model LockoutModel
+@{
+    ViewData["Title"] = "Locked Out";
+}
+
+<div class="container py-5">
+    <div class="card shadow-lg border-0 p-4">
+        <h1 class="display-5 fw-bold text-danger">@ViewData["Title"]</h1>
+        <p class="lead text-danger mt-3">
+            This account has been locked out due to multiple failed login attempts. Please try again later.
+        </p>
+
+        <div class="mt-4">
+            <a class="btn btn-outline-danger w-100 btn-lg" asp-area="Identity" asp-page="/Account/Login" role="button">
+                Back to Login
+            </a>
+        </div>
+    </div>
+</div>

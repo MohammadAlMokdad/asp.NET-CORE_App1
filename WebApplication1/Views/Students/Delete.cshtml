@@ -1,0 +1,35 @@
+﻿@model WebApplication1.Student
+
+@{
+    ViewData["Title"] = "Delete Student";
+}
+
+<div class="container py-5">
+    <div class="card shadow-lg border-0 p-4">
+        <h1 class="display-5 fw-bold text-danger text-center">@ViewData["Title"]</h1>
+        <h3 class="text-center text-muted">Are you sure you want to delete this student?</h3>
+        <hr />
+
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <h4>Student Details</h4>
+                <dl class="row">
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.name)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.name)
+                    </dd>
+                </dl>
+
+                <form asp-action="Delete">
+                    <input type="hidden" asp-for="id" />
+                    <div class="d-flex justify-content-between">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <a asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

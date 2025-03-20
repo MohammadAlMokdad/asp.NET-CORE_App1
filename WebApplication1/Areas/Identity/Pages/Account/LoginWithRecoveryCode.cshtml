@@ -1,0 +1,38 @@
+﻿@page
+@model LoginWithRecoveryCodeModel
+@{
+    ViewData["Title"] = "Recovery code verification";
+}
+
+<div class="container py-5">
+    <div class="card shadow-lg border-0 p-4">
+        <h1 class="display-5 fw-bold text-primary text-center">@ViewData["Title"]</h1>
+        <hr />
+        <p class="text-center">
+            You have requested to log in with a recovery code. This login will not be remembered until you provide
+            an authenticator app code at log in or disable 2FA and log in again.
+        </p>
+
+        <section>
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+                <!-- Recovery Code Input -->
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.RecoveryCode" class="form-control" autocomplete="off" placeholder="Enter your recovery code" />
+                    <label asp-for="Input.RecoveryCode" class="form-label">Recovery Code</label>
+                    <span asp-validation-for="Input.RecoveryCode" class="text-danger"></span>
+                </div>
+
+                <!-- Login Button -->
+                <div>
+                    <button type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

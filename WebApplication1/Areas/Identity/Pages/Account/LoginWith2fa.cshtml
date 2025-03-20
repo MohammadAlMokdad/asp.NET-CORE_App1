@@ -1,0 +1,50 @@
+﻿@page
+@model LoginWith2faModel
+@{
+    ViewData["Title"] = "Two-factor authentication";
+}
+
+<div class="container py-5">
+    <div class="card shadow-lg border-0 p-4">
+        <h1 class="display-5 fw-bold text-primary text-center">@ViewData["Title"]</h1>
+        <hr />
+        <p class="text-center">Your login is protected with an authenticator app. Enter your authenticator code below.</p>
+
+        <section>
+            <form method="post" asp-route-returnUrl="@Model.ReturnUrl">
+                <input asp-for="RememberMe" type="hidden" />
+                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+                <!-- Two-Factor Code Input -->
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.TwoFactorCode" class="form-control" autocomplete="off" placeholder="Enter the code from your authenticator app" />
+                    <label asp-for="Input.TwoFactorCode" class="form-label">Authenticator Code</label>
+                    <span asp-validation-for="Input.TwoFactorCode" class="text-danger"></span>
+                </div>
+
+                <!-- Remember Machine Checkbox -->
+                <div class="checkbox mb-3">
+                    <label asp-for="Input.RememberMachine" class="form-label">
+                        <input asp-for="Input.RememberMachine" class="form-check-input" />
+                        @Html.DisplayNameFor(m => m.Input.RememberMachine)
+                    </label>
+                </div>
+
+                <!-- Login Button -->
+                <div>
+                    <button type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Link to Recovery Code Login -->
+        <p class="mt-3 text-center">
+            Don't have access to your authenticator device? You can
+            <a id="recovery-code-login" class="text-decoration-none" asp-page="./LoginWithRecoveryCode" asp-route-returnUrl="@Model.ReturnUrl">log in with a recovery code</a>.
+        </p>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

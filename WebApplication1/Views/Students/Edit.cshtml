@@ -1,0 +1,39 @@
+﻿@model WebApplication1.Student
+
+@{
+    ViewData["Title"] = "Edit Student";
+}
+
+<div class="container py-5">
+    <div class="card shadow-lg border-0 p-4">
+        <h1 class="display-5 fw-bold text-primary text-center">@ViewData["Title"]</h1>
+        <hr />
+
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <h4>Edit Student Information</h4>
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="id" />
+
+                    <div class="form-group mb-3">
+                        <label asp-for="name" class="form-label"></label>
+                        <input asp-for="name" class="form-control" placeholder="Enter student's name" />
+                        <span asp-validation-for="name" class="text-danger"></span>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                        <a asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

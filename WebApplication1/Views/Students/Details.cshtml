@@ -1,0 +1,31 @@
+﻿@model WebApplication1.Student
+
+@{
+    ViewData["Title"] = "Student Details";
+}
+
+<div class="container py-5">
+    <div class="card shadow-lg border-0 p-4">
+        <h1 class="display-5 fw-bold text-primary text-center">@ViewData["Title"]</h1>
+        <hr />
+
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <h4>Student Information</h4>
+                <dl class="row">
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.name)
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.name)
+                    </dd>
+                </dl>
+
+                <div class="d-flex justify-content-between">
+                    <a asp-action="Edit" asp-route-id="@Model?.id" class="btn btn-warning">Edit</a>
+                    <a asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
